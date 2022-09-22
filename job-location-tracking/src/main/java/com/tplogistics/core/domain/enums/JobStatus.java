@@ -1,0 +1,14 @@
+package com.tplogistics.core.domain.enums;
+
+public enum JobStatus {
+    OPEN,
+    ASSIGNED,
+    DRIVER_JOB_STARTED,
+    DRIVER_PICKUP_ARRIVED,
+    DRIVER_PICKUP_DONE,
+    DRIVER_DELIVERY_STARTED,
+    DRIVER_DELIVERY_ARRIVED,
+    DRIVER_DISCHARGED_DONE,
+    DRIVER_JOB_COMPLETED,
+    CUSTOMER_CANCELLED
+}
