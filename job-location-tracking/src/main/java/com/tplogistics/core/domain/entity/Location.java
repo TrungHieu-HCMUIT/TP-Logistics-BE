@@ -2,17 +2,20 @@ package com.tplogistics.core.domain.entity;
 
 import lombok.Data;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.UUID;
 
 @Data
 @Entity(name = "location")
 public class Location {
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
-    Integer id;
+    UUID id;
 
-
+    @Column(name = "type")
+    Integer locationType;
+    String address;
+    Double latitude;
+    Double longitude;
 }
