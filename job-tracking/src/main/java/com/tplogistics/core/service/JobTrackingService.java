@@ -1,5 +1,11 @@
 package com.tplogistics.core.service;
 
-public interface JobTrackingService {
+import com.tplogistics.controller.dto.request.RecordTrackingRequest;
+import com.tplogistics.controller.dto.response.TrackingListResponse;
 
+import java.util.UUID;
+
+public interface JobTrackingService {
+    boolean recordTracking(RecordTrackingRequest request);
+    TrackingListResponse getJobTrackingList(UUID jobId);
 }
