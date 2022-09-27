@@ -16,6 +16,5 @@ import java.time.LocalDateTime;
 public class TrackingResponse {
     private Double latitude;
     private Double longitude;
-    @JsonFormat(pattern = Const.DEFAULT_DATE_TIME_FORMAT)
-    private LocalDateTime createdAt;
+    private Long createdAt;
 }

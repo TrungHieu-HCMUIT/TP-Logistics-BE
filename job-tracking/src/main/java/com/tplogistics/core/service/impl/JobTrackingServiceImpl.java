@@ -4,13 +4,18 @@ import com.tplogistics.controller.dto.request.RecordTrackingRequest;
 import com.tplogistics.controller.dto.response.TrackingListResponse;
 import com.tplogistics.controller.dto.response.TrackingResponse;
 import com.tplogistics.core.domain.entity.JobTracking;
+import com.tplogistics.core.error_handling.custom_error.InvalidRequest;
+import com.tplogistics.core.error_handling.custom_error.JobNotFound;
 import com.tplogistics.core.service.JobTrackingService;
 import com.tplogistics.repository.JobTrackingRepository;
+import helper.DateTimeHelper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Parameter;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -34,20 +39,16 @@ public class JobTrackingServiceImpl implements JobTrackingService {
     }
 
     @Override
-    public TrackingListResponse getJobTrackingList(UUID jobId) {
-        //TODO: Add exception handle here
-//        if (jobId == null) {
-//            throw new
-//        }
-        List<JobTracking> jobTrackingList = jobTrackingRepository.getAllByJobIdOrderByCreatedAt(jobId);
-        List<TrackingResponse> trackingResponseList = jobTrackingList.stream().map(e -> {
-            return TrackingResponse.builder()
-                    .latitude(e.getLatitude())
-                    .longitude(e.getLongitude())
-                    .createdAt(e.getCreatedAt())
-                    .build();
-        }).toList();
+    public List<JobTracking> getJobTrackingList(UUID jobId) {
+        if (jobId == null) {
+            throw new InvalidRequest("ID cannot be null");
+        }
 
-        return new TrackingListResponse(jobId, trackingResponseList);
+        Optional<JobTracking> jobTracking = jobTrackingRepository.findById(jobId);
+        if (jobTracking.isPresent()) {
+            throw new JobNotFound("Job not found");
+        }
+
+        return jobTrackingRepository.findAllByJobIdOrderByCreatedAt(jobId);
     }
 }

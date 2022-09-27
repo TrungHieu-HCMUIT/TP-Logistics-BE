@@ -9,5 +9,5 @@ import java.util.UUID;
 
 @Repository
 public interface JobTrackingRepository extends JpaRepository<JobTracking, UUID> {
-    List<JobTracking> getAllByJobIdOrderByCreatedAt(UUID jobId);
+    List<JobTracking> findAllByJobIdOrderByCreatedAt(UUID jobId);
 }
