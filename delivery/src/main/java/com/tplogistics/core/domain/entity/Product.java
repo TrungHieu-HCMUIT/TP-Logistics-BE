@@ -8,14 +8,13 @@ import javax.persistence.Id;
 import java.util.UUID;
 
 @Data
-@Entity(name = "location")
-public class Location {
+@Entity(name = "product")
+public class Product {
     @Id
     @Column(name = "id")
-    UUID locationId;
+    UUID productId;
 
     String name;
-    String address;
-    Double latitude;
-    Double longitude;
+    String unit;
+    Integer type;
 }

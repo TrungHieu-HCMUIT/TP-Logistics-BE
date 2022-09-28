@@ -10,12 +10,15 @@ import java.util.UUID;
 @Entity(name = "job")
 public class Job {
     @Id
-    UUID id;
+    @Column(name = "id")
+    UUID jobId;
 
     // Job's information
-    Integer driverId;
-    Integer transportationId;
-    Integer routeId;
+    UUID driverId;
+    UUID transportationId;
+    UUID routeId;
+    UUID fromGarage;
+    UUID toGarage;
     Double distance;
     Double total;
     String pickupContactName;
