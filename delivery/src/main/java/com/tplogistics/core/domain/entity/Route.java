@@ -1,22 +1,15 @@
 package com.tplogistics.core.domain.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.UUID;
 
 @Data
-@Entity(name = "location")
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-public class Location {
+@Entity(name = "route")
+public class Route {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(
@@ -27,13 +20,22 @@ public class Location {
     @Column(updatable = false, nullable = false)
     UUID id;
 
-    @OneToMany(mappedBy = "fromLocation", cascade = CascadeType.ALL)
-    List<Route> from;
-    @OneToMany(mappedBy = "toLocation", cascade = CascadeType.ALL)
-    List<Route> to;
+    /*
+    * From location
+    * */
+    @ManyToOne
+    @JoinColumn(name = "from_location_id")
+    Location fromLocation;
+    /*
+    * To location
+    * */
+    @ManyToOne
+    @JoinColumn(name = "to_location_id")
+    Location toLocation;
 
-    String name;
-    String address;
-    Double latitude;
-    Double longitude;
+    Double length;
+    Double tripBasedCost;
+    Double tonBasedCostPerKm;
+    Double tonBasedLimit;
+    Boolean isEnabled;
 }

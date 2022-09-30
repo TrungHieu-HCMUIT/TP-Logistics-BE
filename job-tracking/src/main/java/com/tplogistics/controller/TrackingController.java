@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
@@ -37,7 +36,7 @@ public class TrackingController extends BaseController {
             return TrackingResponse.builder()
                     .latitude(e.getLatitude())
                     .longitude(e.getLongitude())
-                    .createdAt(DateTimeHelper.toEpochMilli(e.getCreatedAt()))
+                    .createdAt(DateTimeHelper.toEpochSecond(e.getCreatedAt()))
                     .build();
         }).toList();
 
