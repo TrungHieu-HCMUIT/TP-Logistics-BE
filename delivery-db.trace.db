@@ -1,0 +1,124 @@
+2022-09-30 16:59:14 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select * from location l join [*]fetch l.from, l.to where upper(l.name) like upper(?)"; expected "identifier"; SQL statement:
+select * from location l join fetch l.from, l.to where upper(l.name) like upper(?) [42001-214]
+2022-09-30 17:01:41 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select * from location l join [*]fetch l.from where upper(l.name) like upper(1)"; expected "identifier"; SQL statement:
+select * from location l join fetch l.from where upper(l.name) like upper(1) [42001-214]
+2022-09-30 17:15:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select * from location l where upper(l.name) like upper('%'[*], ?, '%')"; expected "[, ::, AT, FORMAT, *, /, %, +, -, ||, NOT, IS, ILIKE, REGEXP, AND, OR, )"; SQL statement:
+select * from location l where upper(l.name) like upper('%', ?, '%') [42001-214]
+2022-09-30 17:42:19 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select * from ROUTE R\000d\000ajoin LOCATION f on r.from_location_id = f.id\000d\000ajoin LOCATION t on r.to_location_id = t.id\000d\000awhere upper(r.name) like upper([*]%ta%)"; expected "INTERSECTS (, NOT, EXISTS, UNIQUE, INTERSECTS"; SQL statement:
+select * from ROUTE R
+join LOCATION f on r.from_location_id = f.id
+join LOCATION t on r.to_location_id = t.id
+where upper(r.name) like upper(%ta%) [42001-214]
+2022-09-30 17:42:45 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select * from ROUTE R\000d\000ajoin LOCATION f on r.from_location_id = f.id\000d\000ajoin LOCATION t on r.to_location_id = t.id\000d\000awhere upper(r.name) like upper([*]%||ta||%)"; expected "INTERSECTS (, NOT, EXISTS, UNIQUE, INTERSECTS"; SQL statement:
+select * from ROUTE R
+join LOCATION f on r.from_location_id = f.id
+join LOCATION t on r.to_location_id = t.id
+where upper(r.name) like upper(%||ta||%) [42001-214]
+2022-09-30 17:43:49 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select * from ROUTE R\000d\000ajoin LOCATION f on r.from_location_id = f.id\000d\000ajoin LOCATION t on r.to_location_id = t.id\000d\000awhere upper(r.name) like upper([*]%ta%)"; expected "INTERSECTS (, NOT, EXISTS, UNIQUE, INTERSECTS"; SQL statement:
+select * from ROUTE R
+join LOCATION f on r.from_location_id = f.id
+join LOCATION t on r.to_location_id = t.id
+where upper(r.name) like upper(%ta%) [42001-214]
+2022-09-30 17:43:57 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select * from ROUTE R \000d\000ajoin LOCATION f on r.from_location_id = f.id \000d\000ajoin LOCATION t on r.to_location_id = t.id \000d\000awhere upper(r.name) like upper([*]%ta%)"; expected "INTERSECTS (, NOT, EXISTS, UNIQUE, INTERSECTS"; SQL statement:
+select * from ROUTE R 
+join LOCATION f on r.from_location_id = f.id 
+join LOCATION t on r.to_location_id = t.id 
+where upper(r.name) like upper(%ta%) [42001-214]
+2022-09-30 17:44:06 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select * from ROUTE r\000d\000ajoin LOCATION f on r.from_location_id = f.id \000d\000ajoin LOCATION t on r.to_location_id = t.id \000d\000awhere upper(r.name) like upper([*]%ta%)"; expected "INTERSECTS (, NOT, EXISTS, UNIQUE, INTERSECTS"; SQL statement:
+select * from ROUTE r
+join LOCATION f on r.from_location_id = f.id 
+join LOCATION t on r.to_location_id = t.id 
+where upper(r.name) like upper(%ta%) [42001-214]
+2022-09-30 17:44:32 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "R.NAME" not found; SQL statement:
+select * from ROUTE r
+join LOCATION f on r.from_location_id = f.id 
+join LOCATION t on r.to_location_id = t.id 
+where upper(r.name) like upper(ta) [42122-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:502)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:244)
+	at org.h2.expression.ExpressionColumn.optimizeOther(ExpressionColumn.java:226)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:213)
+	at org.h2.expression.function.StringFunction1.optimize(StringFunction1.java:207)
+	at org.h2.expression.condition.CompareLike.optimize(CompareLike.java:149)
+	at org.h2.expression.condition.ConditionAndOr.optimize(ConditionAndOr.java:136)
+	at org.h2.expression.Expression.optimizeCondition(Expression.java:148)
+	at org.h2.command.query.Select.prepareExpressions(Select.java:1177)
+	at org.h2.command.query.Query.prepare(Query.java:218)
+	at org.h2.command.Parser.prepareCommand(Parser.java:575)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:631)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:554)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1116)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:237)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1339)
+	at org.h2.server.web.WebApp.query(WebApp.java:1137)
+	at org.h2.server.web.WebApp.query(WebApp.java:1113)
+	at org.h2.server.web.WebApp.process(WebApp.java:244)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:176)
+	at org.h2.server.web.WebServlet.doGet(WebServlet.java:129)
+	at org.h2.server.web.WebServlet.doPost(WebServlet.java:166)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1789)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2022-09-30 17:44:44 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select * from ROUTE r\000d\000ajoin LOCATION f on r.from_location_id = f.id \000d\000ajoin LOCATION t on r.to_location_id = t.id \000d\000awhere upper(r.name) like ([*]%ta%)"; expected "), INTERSECTS (, NOT, EXISTS, UNIQUE, INTERSECTS"; SQL statement:
+select * from ROUTE r
+join LOCATION f on r.from_location_id = f.id 
+join LOCATION t on r.to_location_id = t.id 
+where upper(r.name) like (%ta%) [42001-214]
+2022-09-30 17:44:54 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select * from ROUTE r\000d\000ajoin LOCATION f on r.from_location_id = f.id \000d\000ajoin LOCATION t on r.to_location_id = t.id \000d\000awhere r.name like ([*]%ta%)"; expected "), INTERSECTS (, NOT, EXISTS, UNIQUE, INTERSECTS"; SQL statement:
+select * from ROUTE r
+join LOCATION f on r.from_location_id = f.id 
+join LOCATION t on r.to_location_id = t.id 
+where r.name like (%ta%) [42001-214]
+2022-09-30 17:45:22 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "select * from ROUTE r\000d\000ajoin LOCATION f on r.from_location_id = f.id \000d\000ajoin LOCATION t on r.to_location_id = t.id \000d\000awhere f.name like ([*]%ta%)"; expected "), INTERSECTS (, NOT, EXISTS, UNIQUE, INTERSECTS"; SQL statement:
+select * from ROUTE r
+join LOCATION f on r.from_location_id = f.id 
+join LOCATION t on r.to_location_id = t.id 
+where f.name like (%ta%) [42001-214]

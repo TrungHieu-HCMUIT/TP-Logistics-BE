@@ -1,7 +1,6 @@
 package com.tplogistics.core.service.impl;
 
 import com.tplogistics.controller.dto.request.LocationCreateRequest;
-import com.tplogistics.controller.dto.response.LocationResponse;
 import com.tplogistics.core.domain.entity.Location;
 import com.tplogistics.core.error_handling.custom_error.InvalidRequest;
 import com.tplogistics.core.error_handling.custom_error.LocationNotFound;
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -54,4 +52,5 @@ public class LocationServiceImpl implements LocationService {
 
         return locationRepository.findByNameIgnoreCaseContaining(keyword.toLowerCase());
     }
+
 }
