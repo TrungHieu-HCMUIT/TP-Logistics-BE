@@ -1,5 +1,6 @@
 package com.tplogistics.controller.dto.response;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,7 +13,8 @@ import java.util.UUID;
 @NoArgsConstructor
 @Builder
 public class RouteResponse {
-    UUID id;
+    @JsonProperty("id")
+    UUID routeId;
     LocationResponse fromLocation;
     LocationResponse toLocation;
     Double length;

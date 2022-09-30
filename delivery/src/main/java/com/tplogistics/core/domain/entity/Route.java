@@ -8,6 +8,7 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -24,18 +25,18 @@ public class Route {
     )
     @Type(type = "org.hibernate.type.UUIDCharType")
     @Column(updatable = false, nullable = false)
-    UUID id;
+    UUID routeId;
 
     /*
     * From location
     * */
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "from_location_id")
     Location fromLocation;
     /*
     * To location
     * */
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "to_location_id")
     Location toLocation;
 
@@ -44,4 +45,10 @@ public class Route {
     Double tonBasedCostPerKm;
     Double tonBasedLimit;
     Boolean isEnabled;
+
+    /*
+    * Reference
+    * */
+    @OneToMany(mappedBy = "fromLocation", cascade = CascadeType.ALL)
+    List<Job> jobs;
 }

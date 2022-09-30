@@ -22,15 +22,18 @@ public class Location {
     )
     @Type(type = "org.hibernate.type.UUIDCharType")
     @Column(updatable = false, nullable = false)
-    UUID id;
-
-    @OneToMany(mappedBy = "fromLocation", cascade = CascadeType.ALL)
-    List<Route> from;
-    @OneToMany(mappedBy = "toLocation", cascade = CascadeType.ALL)
-    List<Route> to;
+    UUID locationId;
 
     String name;
     String address;
     Double latitude;
     Double longitude;
+
+    /*
+    * Reference
+    * */
+    @OneToMany(mappedBy = "fromLocation", cascade = CascadeType.ALL)
+    List<Route> fromLocation;
+    @OneToMany(mappedBy = "toLocation", cascade = CascadeType.ALL)
+    List<Route> toLocation;
 }

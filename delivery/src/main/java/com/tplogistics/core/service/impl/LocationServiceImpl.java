@@ -30,7 +30,7 @@ public class LocationServiceImpl implements LocationService {
                 .build();
 
         var result = locationRepository.save(location);
-        return result.getId();
+        return result.getLocationId();
     }
 
     @Override
@@ -50,7 +50,9 @@ public class LocationServiceImpl implements LocationService {
             throw new InvalidRequest("Invalid keyword");
         }
 
-        return locationRepository.findByNameIgnoreCaseContaining(keyword.toLowerCase());
+        var result = locationRepository.findByNameIgnoreCaseContaining(keyword.toLowerCase());
+        return result;
     }
+
 
 }

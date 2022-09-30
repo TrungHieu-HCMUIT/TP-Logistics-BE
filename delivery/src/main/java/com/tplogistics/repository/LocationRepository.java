@@ -10,4 +10,6 @@ import java.util.UUID;
 
 public interface LocationRepository extends JpaRepository<Location, UUID> {
     List<Location> findByNameIgnoreCaseContaining(String keyword);
+
+    Location findByNameContaining(String keyword);
 }

@@ -17,14 +17,18 @@ public class Job {
             name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator"
     )
-    @Type(type="org.hibernate.type.UUIDCharType")
+    @Type(type = "org.hibernate.type.UUIDCharType")
     @Column(updatable = false, nullable = false)
-    UUID id;
+    UUID jobId;
 
     // Job's information
     UUID driverId;
     UUID transportationId;
-    UUID routeId;
+
+    @ManyToOne()
+    @JoinColumn(name = "route_id")
+    Route routeId;
+
     UUID fromGarage;
     UUID toGarage;
     Double distance;
@@ -35,7 +39,6 @@ public class Job {
     String unloadContactNo;
 
     // Job's progress
-    @Column(name = "status")
     Integer jobStatus;
     // Time statistics
     @Temporal(TemporalType.DATE)
