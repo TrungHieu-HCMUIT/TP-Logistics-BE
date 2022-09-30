@@ -4,7 +4,6 @@ import lombok.Data;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
-import java.util.UUID;
 
 @Data
 public class RouteCreateRequest {
@@ -24,11 +23,9 @@ public class RouteCreateRequest {
 
     @NotNull(message = "Cost cannot be null")
     @Positive(message = "Invalid cost")
-    Double tonBasedCostPerKm;
+    Double tonBasedPerKmCost;
 
     @NotNull(message = "Limit cannot be null")
     @Positive(message = "Invalid limit")
     Double tonBasedLimit;
-
-    Boolean isEnabled;
 }

@@ -36,25 +36,22 @@ public class LocationServiceImpl implements LocationService {
     }
 
     @Override
-    public LocationResponse findLocation(UUID id) {
+    public Location findLocation(UUID id) {
         var location = locationRepository.findById(id);
 
         if (location.isEmpty()) {
             throw new LocationNotFound("Location not found");
         }
 
-        return modelMapper.map(location.get(), LocationResponse.class);
+        return location.get();
     }
 
     @Override
-    public List<LocationResponse> findLocationByName(String keyword) {
+    public List<Location> findLocationByName(String keyword) {
         if (keyword.isBlank()) {
             throw new InvalidRequest("Invalid keyword");
         }
 
-        List<Location> locations = locationRepository.findByNameIgnoreCaseContaining(keyword.toLowerCase());
-        return locations.stream()
-                .map(e -> modelMapper.map(e, LocationResponse.class))
-                .collect(Collectors.toList());
+        return locationRepository.findByNameIgnoreCaseContaining(keyword.toLowerCase());
     }
 }
