@@ -9,5 +9,5 @@ import java.util.UUID;
 public interface RouteService {
     UUID createRoute(RouteCreateRequest request);
     Route findRoute(UUID id);
-    List<Route> findRouteByLocationName(String fromLocationName, String toLocationName);
+    List<Route> findRouteByLocationName(String fromLocationNameKeyword, String toLocationNameKeyword);
 }

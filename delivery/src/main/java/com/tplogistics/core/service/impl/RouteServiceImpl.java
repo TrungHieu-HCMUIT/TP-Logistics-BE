@@ -10,6 +10,7 @@ import com.tplogistics.repository.RouteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -52,13 +53,23 @@ public class RouteServiceImpl implements RouteService {
     }
 
     @Override
-    public List<Route> findRouteByLocationName(String fromLocationName, String toLocationName) {
-        if (fromLocationName.isBlank() && toLocationName.isBlank()) {
+    public List<Route> findRouteByLocationName(String fromLocationNameKeyword, String toLocationNameKeyword) {
+        if (fromLocationNameKeyword.isBlank() && toLocationNameKeyword.isBlank()) {
             throw new InvalidRequest("Invalid location name");
         }
 
+        List<Route> routes = new ArrayList<>();
 
+        if (fromLocationNameKeyword.isBlank()) { // Find by toLocationName keyword
+            routes = routeRepository.findByIgnoreCaseToLocation_NameContaining(toLocationNameKeyword);
+        }
+        else if (toLocationNameKeyword.isBlank()) { // Find by fromLocationName keyword
+            routes = routeRepository.findByIgnoreCaseFromLocation_NameContaining(fromLocationNameKeyword);
+        }
+        else { // Find by both
+            routes = routeRepository.findByIgnoreCaseFromLocation_NameContainingAndIgnoreCaseToLocation_NameContaining(fromLocationNameKeyword, toLocationNameKeyword);
+        }
 
-        return null;
+        return routes;
     }
 }

@@ -10,5 +10,7 @@ import java.util.UUID;
 
 @Repository
 public interface RouteRepository extends JpaRepository<Route, UUID> {
-
+    List<Route> findByIgnoreCaseFromLocation_NameContainingAndIgnoreCaseToLocation_NameContaining(String fromLocationKeyword, String toLocationKeyword);
+    List<Route> findByIgnoreCaseFromLocation_NameContaining(String fromLocationKeyword);
+    List<Route> findByIgnoreCaseToLocation_NameContaining(String toLocationKeyword);
 }

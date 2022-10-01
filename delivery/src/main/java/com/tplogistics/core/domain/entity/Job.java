@@ -27,7 +27,7 @@ public class Job {
 
     @ManyToOne()
     @JoinColumn(name = "route_id")
-    Route routeId;
+    Route route;
 
     UUID fromGarage;
     UUID toGarage;

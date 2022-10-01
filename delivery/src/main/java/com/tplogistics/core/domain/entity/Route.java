@@ -49,6 +49,6 @@ public class Route {
     /*
     * Reference
     * */
-    @OneToMany(mappedBy = "fromLocation", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "route", cascade = CascadeType.ALL)
     List<Job> jobs;
 }
