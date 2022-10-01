@@ -1,15 +1,18 @@
 package com.tplogistics.core.domain.entity;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
-@Data
 @Entity(name = "job")
+@Getter
+@Setter
 public class Job {
     @Id
     @GeneratedValue(generator = "UUID")
@@ -23,7 +26,10 @@ public class Job {
 
     // Job's information
     UUID driverId;
-    UUID transportationId;
+
+    @ManyToOne
+    @JoinColumn(name = "transportation_id")
+    Transportation transportation;
 
     @ManyToOne()
     @JoinColumn(name = "route_id")
@@ -57,4 +63,13 @@ public class Job {
     Date unloadDoneAt;
     @Temporal(TemporalType.DATE)
     Date completedAt;
+
+    /*
+     * Reference
+     * */
+    @OneToMany(mappedBy = "job", cascade = CascadeType.ALL)
+    List<DriverJob> driverJobs;
+    @OneToMany(mappedBy = "job", cascade = CascadeType.ALL)
+    List<JobProduct> jobProducts;
+
 }

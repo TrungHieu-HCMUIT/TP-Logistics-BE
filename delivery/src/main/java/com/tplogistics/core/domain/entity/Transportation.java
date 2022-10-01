@@ -8,13 +8,13 @@ import javax.persistence.*;
 import java.util.List;
 import java.util.UUID;
 
-@Entity(name = "route")
+@Entity(name = "transportation")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @Builder
-public class Route {
+public class Transportation {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(
@@ -23,30 +23,23 @@ public class Route {
     )
     @Type(type = "org.hibernate.type.UUIDCharType")
     @Column(updatable = false, nullable = false)
-    UUID routeId;
+    UUID transportationId;
 
     /*
-     * From location
+     * Current garage
      * */
-    @ManyToOne()
-    @JoinColumn(name = "from_location_id")
-    Location fromLocation;
-    /*
-     * To location
-     * */
-    @ManyToOne()
-    @JoinColumn(name = "to_location_id")
-    Location toLocation;
+    //TODO: Update relation between Transportation - Garage
+//    @ManyToOne()
+//    @JoinColumn(name = "from_location_id")
+//    Location fromLocation;
 
-    Double length;
-    Double tripBasedCost;
-    Double tonBasedCostPerKm;
-    Double tonBasedLimit;
-    Boolean isEnabled;
+    String licensePlate;
+    Double load;
+    Integer deliveryStatus;
 
     /*
-     * Reference
-     * */
-    @OneToMany(mappedBy = "route", cascade = CascadeType.ALL)
+    * Reference
+    * */
+    @OneToMany(mappedBy = "transportation", cascade = CascadeType.ALL)
     List<Job> jobs;
 }

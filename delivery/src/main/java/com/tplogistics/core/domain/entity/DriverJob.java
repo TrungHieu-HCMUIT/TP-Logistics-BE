@@ -5,16 +5,15 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.UUID;
 
-@Entity(name = "location")
+@Entity(name = "driver_job")
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class Location {
+public class DriverJob {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(
@@ -23,18 +22,21 @@ public class Location {
     )
     @Type(type = "org.hibernate.type.UUIDCharType")
     @Column(updatable = false, nullable = false)
-    UUID locationId;
-
-    String name;
-    String address;
-    Double latitude;
-    Double longitude;
+    UUID driverJobId;
 
     /*
-     * Reference
-     * */
-    @OneToMany(mappedBy = "fromLocation", cascade = CascadeType.ALL)
-    List<Route> fromLocation;
-    @OneToMany(mappedBy = "toLocation", cascade = CascadeType.ALL)
-    List<Route> toLocation;
+    * Reference
+    * */
+    @ManyToOne()
+    @JoinColumn(name = "job_id")
+    Job job;
+
+    UUID driverId;
+
+    Double labourCost;
+    Double additionalCost;
+
+    Integer type;
+    Double distance;
+    String comment;
 }
