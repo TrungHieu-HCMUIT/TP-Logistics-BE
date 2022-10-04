@@ -43,6 +43,7 @@ public class Job {
     String pickupContactNo;
     String unloadContactName;
     String unloadContactNo;
+    String noteToDriver;
 
     // Job's progress
     Integer jobStatus;
