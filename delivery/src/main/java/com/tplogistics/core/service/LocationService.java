@@ -1,6 +1,6 @@
 package com.tplogistics.core.service;
 
-import com.tplogistics.controller.dto.request.LocationCreateRequest;
+import com.tplogistics.controller.dto.request.create.LocationCreateRequest;
 import com.tplogistics.core.domain.entity.Location;
 
 import java.util.List;

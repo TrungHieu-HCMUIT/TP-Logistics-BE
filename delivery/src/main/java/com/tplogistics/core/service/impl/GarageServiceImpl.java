@@ -1,17 +1,12 @@
 package com.tplogistics.core.service.impl;
 
-import com.tplogistics.controller.dto.request.GarageCreateRequest;
-import com.tplogistics.controller.dto.request.LocationCreateRequest;
+import com.tplogistics.controller.dto.request.create.GarageCreateRequest;
 import com.tplogistics.core.domain.entity.Garage;
-import com.tplogistics.core.domain.entity.Location;
 import com.tplogistics.core.error_handling.custom_error.InvalidRequest;
-import com.tplogistics.core.error_handling.custom_error.LocationNotFound;
+import com.tplogistics.core.error_handling.custom_error.NotFoundException;
 import com.tplogistics.core.service.GarageService;
-import com.tplogistics.core.service.LocationService;
 import com.tplogistics.repository.GarageRepository;
-import com.tplogistics.repository.LocationRepository;
 import lombok.RequiredArgsConstructor;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -41,7 +36,7 @@ public class GarageServiceImpl implements GarageService {
         var location = garageRepository.findById(id);
 
         if (location.isEmpty()) {
-            throw new LocationNotFound("Location not found");
+            throw new NotFoundException("Location not found");
         }
 
         return location.get();

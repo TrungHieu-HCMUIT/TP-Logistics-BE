@@ -1,6 +1,6 @@
 package com.tplogistics.core.service;
 
-import com.tplogistics.controller.dto.request.ProductCreateRequest;
+import com.tplogistics.controller.dto.request.create.ProductCreateRequest;
 import com.tplogistics.core.domain.entity.Product;
 
 import java.util.List;

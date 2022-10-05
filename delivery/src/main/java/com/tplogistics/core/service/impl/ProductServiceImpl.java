@@ -1,16 +1,12 @@
 package com.tplogistics.core.service.impl;
 
-import com.tplogistics.controller.dto.request.ProductCreateRequest;
-import com.tplogistics.controller.dto.request.RouteCreateRequest;
+import com.tplogistics.controller.dto.request.create.ProductCreateRequest;
 import com.tplogistics.core.domain.entity.Product;
-import com.tplogistics.core.domain.entity.Route;
+import com.tplogistics.core.domain.enums.ProductType;
 import com.tplogistics.core.error_handling.custom_error.InvalidRequest;
-import com.tplogistics.core.error_handling.custom_error.RouteNotFound;
-import com.tplogistics.core.service.LocationService;
+import com.tplogistics.core.error_handling.custom_error.NotFoundException;
 import com.tplogistics.core.service.ProductService;
-import com.tplogistics.core.service.RouteService;
 import com.tplogistics.repository.ProductRepository;
-import com.tplogistics.repository.RouteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +22,10 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public UUID createProduct(ProductCreateRequest request) {
+        if (ProductType.fromInt(request.getType()) == null) {
+            throw new NotFoundException("Product type does not exist");
+        }
+
         Product product = Product.builder()
                 .name(request.getName())
                 .unit(request.getUnit())
@@ -40,7 +40,7 @@ public class ProductServiceImpl implements ProductService {
     public Product findProduct(UUID id) {
         var result = productRepository.findById(id);
         if (result.isEmpty()) {
-            throw new RouteNotFound("Product not found");
+            throw new NotFoundException("Product not found");
         }
         return result.get();
     }

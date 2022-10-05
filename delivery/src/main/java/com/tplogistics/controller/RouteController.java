@@ -1,6 +1,6 @@
 package com.tplogistics.controller;
 
-import com.tplogistics.controller.dto.request.RouteCreateRequest;
+import com.tplogistics.controller.dto.request.create.RouteCreateRequest;
 import com.tplogistics.controller.dto.response.RouteResponse;
 import com.tplogistics.core.domain.entity.Route;
 import com.tplogistics.core.service.RouteService;

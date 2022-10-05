@@ -1,6 +1,6 @@
 package com.tplogistics.controller;
 
-import com.tplogistics.controller.dto.request.LocationCreateRequest;
+import com.tplogistics.controller.dto.request.create.LocationCreateRequest;
 import com.tplogistics.controller.dto.response.LocationResponse;
 import com.tplogistics.core.service.LocationService;
 import controller.base.BaseController;

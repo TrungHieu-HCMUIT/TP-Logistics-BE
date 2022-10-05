@@ -1,9 +1,9 @@
 package com.tplogistics.core.service.impl;
 
-import com.tplogistics.controller.dto.request.LocationCreateRequest;
+import com.tplogistics.controller.dto.request.create.LocationCreateRequest;
 import com.tplogistics.core.domain.entity.Location;
 import com.tplogistics.core.error_handling.custom_error.InvalidRequest;
-import com.tplogistics.core.error_handling.custom_error.LocationNotFound;
+import com.tplogistics.core.error_handling.custom_error.NotFoundException;
 import com.tplogistics.core.service.LocationService;
 import com.tplogistics.repository.LocationRepository;
 import lombok.RequiredArgsConstructor;
@@ -38,7 +38,7 @@ public class LocationServiceImpl implements LocationService {
         var location = locationRepository.findById(id);
 
         if (location.isEmpty()) {
-            throw new LocationNotFound("Location not found");
+            throw new NotFoundException("Location not found");
         }
 
         return location.get();

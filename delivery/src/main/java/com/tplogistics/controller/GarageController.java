@@ -1,7 +1,6 @@
 package com.tplogistics.controller;
 
-import com.tplogistics.controller.dto.request.GarageCreateRequest;
-import com.tplogistics.controller.dto.request.LocationCreateRequest;
+import com.tplogistics.controller.dto.request.create.GarageCreateRequest;
 import com.tplogistics.controller.dto.response.LocationResponse;
 import com.tplogistics.core.service.GarageService;
 import controller.base.BaseController;

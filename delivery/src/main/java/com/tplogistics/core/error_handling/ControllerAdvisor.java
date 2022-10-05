@@ -1,8 +1,7 @@
 package com.tplogistics.core.error_handling;
 
 import com.tplogistics.core.error_handling.custom_error.InvalidRequest;
-import com.tplogistics.core.error_handling.custom_error.LocationNotFound;
-import com.tplogistics.core.error_handling.custom_error.RouteNotFound;
+import com.tplogistics.core.error_handling.custom_error.NotFoundException;
 import controller.base.BaseResponse;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -32,15 +31,9 @@ public class ControllerAdvisor extends ResponseEntityExceptionHandler {
         return errorResponse(HttpStatus.BAD_REQUEST, ex.getMessage());
     }
 
-    @ExceptionHandler(LocationNotFound.class)
+    @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<Object> handleLocationNotFoundException(
-            LocationNotFound ex, WebRequest request) {
-        return errorResponse(HttpStatus.NOT_FOUND, ex.getMessage());
-    }
-
-    @ExceptionHandler(RouteNotFound.class)
-    public ResponseEntity<Object> handleRouteNotFoundException(
-            RouteNotFound ex, WebRequest request) {
+            NotFoundException ex, WebRequest request) {
         return errorResponse(HttpStatus.NOT_FOUND, ex.getMessage());
     }
 

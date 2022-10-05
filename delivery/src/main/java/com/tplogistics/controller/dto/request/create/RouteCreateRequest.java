@@ -1,4 +1,4 @@
-package com.tplogistics.controller.dto.request;
+package com.tplogistics.controller.dto.request.create;
 
 import lombok.Data;
 

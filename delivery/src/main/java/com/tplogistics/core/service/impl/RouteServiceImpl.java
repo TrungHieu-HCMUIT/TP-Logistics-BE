@@ -1,9 +1,9 @@
 package com.tplogistics.core.service.impl;
 
-import com.tplogistics.controller.dto.request.RouteCreateRequest;
+import com.tplogistics.controller.dto.request.create.RouteCreateRequest;
 import com.tplogistics.core.domain.entity.Route;
 import com.tplogistics.core.error_handling.custom_error.InvalidRequest;
-import com.tplogistics.core.error_handling.custom_error.RouteNotFound;
+import com.tplogistics.core.error_handling.custom_error.NotFoundException;
 import com.tplogistics.core.service.LocationService;
 import com.tplogistics.core.service.RouteService;
 import com.tplogistics.repository.RouteRepository;
@@ -47,7 +47,7 @@ public class RouteServiceImpl implements RouteService {
     public Route findRoute(UUID id) {
         var result = routeRepository.findById(id);
         if (result.isEmpty()) {
-            throw new RouteNotFound("Route not found");
+            throw new NotFoundException("Route not found");
         }
         return result.get();
     }

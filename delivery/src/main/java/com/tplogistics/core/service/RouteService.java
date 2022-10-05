@@ -1,6 +1,6 @@
 package com.tplogistics.core.service;
 
-import com.tplogistics.controller.dto.request.RouteCreateRequest;
+import com.tplogistics.controller.dto.request.create.RouteCreateRequest;
 import com.tplogistics.core.domain.entity.Route;
 
 import java.util.List;

@@ -26,13 +26,13 @@ public class Route {
     UUID routeId;
 
     /*
-     * From location
+     * From location reference
      * */
     @ManyToOne()
     @JoinColumn(name = "from_location_id")
     Location fromLocation;
     /*
-     * To location
+     * To location reference
      * */
     @ManyToOne()
     @JoinColumn(name = "to_location_id")

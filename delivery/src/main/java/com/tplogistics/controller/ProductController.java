@@ -1,10 +1,8 @@
 package com.tplogistics.controller;
 
-import com.tplogistics.controller.dto.request.ProductCreateRequest;
+import com.tplogistics.controller.dto.request.create.ProductCreateRequest;
 import com.tplogistics.controller.dto.response.ProductResponse;
-import com.tplogistics.controller.dto.response.RouteResponse;
 import com.tplogistics.core.domain.entity.Product;
-import com.tplogistics.core.domain.entity.Route;
 import com.tplogistics.core.service.ProductService;
 import controller.base.BaseController;
 import lombok.RequiredArgsConstructor;

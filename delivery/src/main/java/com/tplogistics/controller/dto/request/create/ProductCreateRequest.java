@@ -1,4 +1,4 @@
-package com.tplogistics.controller.dto.request;
+package com.tplogistics.controller.dto.request.create;
 
 import lombok.Data;
 
@@ -16,6 +16,5 @@ public class ProductCreateRequest {
 
     @NotNull(message = "Type cannot be null")
     @Positive(message = "Invalid type")
-    @Size(min = 1, max = 9, message = "Type not found")
     Integer type;
 }

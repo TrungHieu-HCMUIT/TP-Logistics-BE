@@ -26,13 +26,13 @@ public class JobProduct {
     UUID id;
 
     /*
-     * From location
+     * Job reference
      * */
     @ManyToOne()
     @JoinColumn(name = "job_id")
     Job job;
     /*
-     * To location
+     * Product reference
      * */
     @ManyToOne()
     @JoinColumn(name = "product_id")
