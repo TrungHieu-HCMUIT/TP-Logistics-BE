@@ -1,10 +1,14 @@
 package com.tplogistics.core.service.impl;
 
+import com.tplogistics.controller.dto.request.GarageCreateRequest;
 import com.tplogistics.controller.dto.request.LocationCreateRequest;
+import com.tplogistics.core.domain.entity.Garage;
 import com.tplogistics.core.domain.entity.Location;
 import com.tplogistics.core.error_handling.custom_error.InvalidRequest;
 import com.tplogistics.core.error_handling.custom_error.LocationNotFound;
+import com.tplogistics.core.service.GarageService;
 import com.tplogistics.core.service.LocationService;
+import com.tplogistics.repository.GarageRepository;
 import com.tplogistics.repository.LocationRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -15,27 +19,26 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class LocationServiceImpl implements LocationService {
+public class GarageServiceImpl implements GarageService {
 
-    private final LocationRepository locationRepository;
-    private final ModelMapper modelMapper;
+    private final GarageRepository garageRepository;
 
     @Override
-    public UUID createLocation(LocationCreateRequest request) {
-        Location location = Location.builder()
+    public UUID createGarage(GarageCreateRequest request) {
+        Garage garage = Garage.builder()
                 .name(request.getName())
                 .address(request.getAddress())
                 .latitude(request.getLatitude())
                 .longitude(request.getLongitude())
                 .build();
 
-        var result = locationRepository.save(location);
-        return result.getLocationId();
+        var result = garageRepository.save(garage);
+        return result.getGarageId();
     }
 
     @Override
-    public Location findLocation(UUID id) {
-        var location = locationRepository.findById(id);
+    public Garage findGarage(UUID id) {
+        var location = garageRepository.findById(id);
 
         if (location.isEmpty()) {
             throw new LocationNotFound("Location not found");
@@ -45,13 +48,11 @@ public class LocationServiceImpl implements LocationService {
     }
 
     @Override
-    public List<Location> findLocationByName(String keyword) {
+    public List<Garage> findGarageByName(String keyword) {
         if (keyword.isBlank()) {
             throw new InvalidRequest("Invalid keyword");
         }
 
-        return locationRepository.findByNameIgnoreCaseContaining(keyword.toLowerCase());
+        return garageRepository.findByNameIgnoreCaseContaining(keyword.toLowerCase());
     }
-
-
 }
