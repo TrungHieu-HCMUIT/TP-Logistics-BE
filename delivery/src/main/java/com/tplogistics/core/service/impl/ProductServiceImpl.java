@@ -30,6 +30,7 @@ public class ProductServiceImpl implements ProductService {
                 .name(request.getName())
                 .unit(request.getUnit())
                 .type(request.getType())
+                .basePrice(request.getBasePrice())
                 .build();
         var result = productRepository.save(product);
 

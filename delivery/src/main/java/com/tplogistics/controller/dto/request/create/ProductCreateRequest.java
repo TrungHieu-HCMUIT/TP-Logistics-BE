@@ -17,4 +17,8 @@ public class ProductCreateRequest {
     @NotNull(message = "Type cannot be null")
     @Positive(message = "Invalid type")
     Integer type;
+
+    @NotNull(message = "Base price cannot be null")
+    @Positive(message = "Invalid price")
+    Double basePrice;
 }

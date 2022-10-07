@@ -33,6 +33,6 @@ public class Garage {
     /*
      * Reference
      * */
-//    @OneToMany(mappedBy = "fromLocation", cascade = CascadeType.ALL)
-//    List<Route> fromLocation;
+    @OneToMany(mappedBy = "garage", cascade = CascadeType.ALL)
+    List<Transportation> garages;
 }

@@ -21,10 +21,6 @@ public class RouteCreateRequest {
     @Positive(message = "Invalid cost")
     Double tripBasedCost;
 
-    @NotNull(message = "Cost cannot be null")
-    @Positive(message = "Invalid cost")
-    Double tonBasedPerKmCost;
-
     @NotNull(message = "Limit cannot be null")
     @Positive(message = "Invalid limit")
     Double tonBasedLimit;

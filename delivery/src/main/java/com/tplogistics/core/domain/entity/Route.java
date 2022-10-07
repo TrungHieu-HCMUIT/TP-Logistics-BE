@@ -40,7 +40,6 @@ public class Route {
 
     Double length;
     Double tripBasedCost;
-    Double tonBasedCostPerKm;
     Double tonBasedLimit;
     Boolean isEnabled;
 

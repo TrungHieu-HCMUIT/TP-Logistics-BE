@@ -14,9 +14,7 @@ public class JobProductCreateRequest {
     @NotBlank(message = "Invalid product id")
     String productId;
 
-    @NotNull(message = "Quantity cannot be null")
-    @Positive(message = "Invalid quantity")
-    Integer quantity;
-
-    //TODO: Add grandTotal field or not
+    @NotNull(message = "Weight cannot be null")
+    @Positive(message = "Invalid weight")
+    Double weight;
 }

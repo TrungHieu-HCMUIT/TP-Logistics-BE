@@ -28,10 +28,9 @@ public class Transportation {
     /*
      * Current garage
      * */
-    //TODO: Update relation between Transportation - Garage
-//    @ManyToOne()
-//    @JoinColumn(name = "from_location_id")
-//    Location fromLocation;
+    @ManyToOne()
+    @JoinColumn(name = "garage_id")
+    Garage garage;
 
     String licensePlate;
     Double load;

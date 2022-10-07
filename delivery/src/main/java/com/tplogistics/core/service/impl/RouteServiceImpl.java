@@ -35,7 +35,6 @@ public class RouteServiceImpl implements RouteService {
                 .toLocation(toLocation)
                 .length(request.getLength())
                 .tripBasedCost(request.getTripBasedCost())
-                .tonBasedCostPerKm(request.getTonBasedPerKmCost())
                 .tonBasedLimit(request.getTonBasedLimit())
                 .isEnabled(true)
                 .build();

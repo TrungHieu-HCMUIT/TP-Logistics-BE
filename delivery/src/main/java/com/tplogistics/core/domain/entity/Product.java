@@ -28,6 +28,7 @@ public class Product {
     String name;
     String unit;
     Integer type;
+    Double basePrice;
 
     /*
      * Reference

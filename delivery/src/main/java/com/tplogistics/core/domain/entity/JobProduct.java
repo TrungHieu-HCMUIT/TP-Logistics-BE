@@ -38,7 +38,7 @@ public class JobProduct {
     @JoinColumn(name = "product_id")
     Product product;
 
-    Integer quantity;
+    Double weight;
     Double grandTotal;
 
 }
