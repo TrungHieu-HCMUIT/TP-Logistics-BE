@@ -26,14 +26,8 @@ public class Job {
 
     // Job's information
     UUID driverId;
-
-    @ManyToOne
-    @JoinColumn(name = "transportation_id")
-    Transportation transportation;
-
-    @ManyToOne()
-    @JoinColumn(name = "route_id")
-    Route route;
+    UUID transportationId;
+    UUID routeId;
 
     UUID fromGarage;
     UUID toGarage;
@@ -63,12 +57,4 @@ public class Job {
     Date unloadDoneAt;
     @Temporal(TemporalType.TIMESTAMP)
     Date completedAt;
-
-    /*
-     * Reference
-     * */
-    @OneToMany(mappedBy = "job", cascade = CascadeType.ALL)
-    List<DriverJob> driverJobs;
-    @OneToMany(mappedBy = "job", cascade = CascadeType.ALL)
-    List<JobProduct> jobProducts;
 }
