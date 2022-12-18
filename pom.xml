@@ -9,12 +9,12 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<modules>
 		<module>job-tracking</module>
+		<module>job-product</module>
 		<module>delivery</module>
 		<module>common</module>
         <module>clients</module>
-		<module>job</module>
 		<module>location</module>
-	</modules>
+    </modules>
 
 	<name>tplogistics</name>
 	<description>Back-end application for TP Logistics</description>

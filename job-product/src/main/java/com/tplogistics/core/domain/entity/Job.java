@@ -28,7 +28,6 @@ public class Job {
     UUID driverId;
     UUID transportationId;
     UUID routeId;
-
     UUID fromGarage;
     UUID toGarage;
     Double total;
@@ -57,4 +56,10 @@ public class Job {
     Date unloadDoneAt;
     @Temporal(TemporalType.TIMESTAMP)
     Date completedAt;
+
+    /*
+     * Reference
+     * */
+    @OneToMany(mappedBy = "job", cascade = CascadeType.ALL)
+    List<JobProduct> jobProducts;
 }
